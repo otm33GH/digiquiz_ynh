@@ -1,0 +1,62 @@
+#:schema https://raw.githubusercontent.com/YunoHost/apps/master/schemas/manifest.v2.schema.json
+
+packaging_format = 2
+
+id = "digiwords"
+name = "Digiwords"
+description.en = "Create interactive wordclouds"
+description.fr = "Créer des nuages de mots interactifs"
+
+version = "0.6.5~ynh1"
+
+maintainers = ["Pierre-Amiel Giraud"]
+
+[upstream]
+license = "GPL-3.0-only"
+website = "https://ladigitale.dev/"
+demo = "https://ladigitale.dev/digiwords/#/"
+admindoc = "https://codeberg.org/ladigitale/digiwords/src/branch/master/README.md"
+userdoc = "https://ladigitale.dev/blog/digiwords-pour-creer-des-nuages-de-mots"
+code = "https://codeberg.org/ladigitale/digiwords"
+
+[integration]
+yunohost = ">= 12.1.38"
+helpers_version = "2.1"
+architectures = "all"
+multi_instance = true
+
+ldap = false
+sso = false
+
+disk = "50M"
+ram.build = "50M"
+ram.runtime = "50M"
+
+[install]
+    [install.domain]
+    type = "domain"
+
+    [install.path]
+    type = "path"
+    default = "/digiwords"
+
+    [install.init_main_permission]
+    type = "group"
+    default = "visitors"
+
+[resources]
+    [resources.sources.main]
+    url = "https://codeberg.org/ladigitale/digiwords/releases/download/0.6.7/digiwords-v0.6.7.zip"
+    sha256 = "0cd394ac12c37b9d1112f9b53f051724a8ef5ad389494d33bbf25c8dfe8d828a"
+    autoupdate.strategy = "latest_forgejo_release"
+
+    [resources.system_user]
+
+    [resources.install_dir]
+    group = "www-data:r-x"
+
+    [resources.permissions]
+    main.url = "/"
+
+    [resources.apt]
+    packages = "php8.4-fpm"
