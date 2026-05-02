@@ -2,22 +2,22 @@
 
 packaging_format = 2
 
-id = "digiwords"
-name = "Digiwords"
-description.en = "Create interactive wordclouds"
-description.fr = "Créer des nuages de mots interactifs"
+id = "digiquiz"
+name = "Digiquiz"
+description.en = "Publishing content created with H5P"
+description.fr = "Publier des contenus créés avec H5P"
 
-version = "0.6.5~ynh1"
+version = "1.4.10~ynh1"
 
-maintainers = ["Pierre-Amiel Giraud"]
+maintainers = ["otm33GH"]
 
 [upstream]
-license = "GPL-3.0-only"
+license = "AGPL-3.0-only"
 website = "https://ladigitale.dev/"
-demo = "https://ladigitale.dev/digiwords/#/"
-admindoc = "https://codeberg.org/ladigitale/digiwords/src/branch/master/README.md"
-userdoc = "https://ladigitale.dev/blog/digiwords-pour-creer-des-nuages-de-mots"
-code = "https://codeberg.org/ladigitale/digiwords"
+demo = "https://ladigitale.dev/digiquiz/#/"
+admindoc = "https://codeberg.org/ladigitale/digiquiz#readme"
+userdoc = "https://ladigitale.dev/blog/digiquiz-pour-lire-et-partager-des-contenus-h5p-en-ligne"
+code = "https://codeberg.org/ladigitale/digiquiz"
 
 [integration]
 yunohost = ">= 12.1.38"
@@ -38,7 +38,7 @@ ram.runtime = "50M"
 
     [install.path]
     type = "path"
-    default = "/digiwords"
+    default = "/digiquiz"
 
     [install.init_main_permission]
     type = "group"
@@ -46,8 +46,8 @@ ram.runtime = "50M"
 
 [resources]
     [resources.sources.main]
-    url = "https://codeberg.org/ladigitale/digiwords/releases/download/0.6.7/digiwords-v0.6.7.zip"
-    sha256 = "0cd394ac12c37b9d1112f9b53f051724a8ef5ad389494d33bbf25c8dfe8d828a"
+    url = "https://codeberg.org/ladigitale/digiquiz/archive/1.4.10.tar.gz"
+    sha256 = "c255f760f2039149d95ac277c1f1f00c39d2e5ca6dd731ac8b17acf53416be93"
     autoupdate.strategy = "latest_forgejo_release"
 
     [resources.system_user]
@@ -59,4 +59,7 @@ ram.runtime = "50M"
     main.url = "/"
 
     [resources.apt]
-    packages = "php8.4-fpm"
+    packages = "php8.5-fpm"
+
+    [resources.nodejs]
+    version = "24"
