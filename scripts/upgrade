@@ -42,6 +42,24 @@ popd
 chown -R $app:www-data "$install_dir/dist"
 
 #=================================================
+# SYSTEM CONFIGURATION
+#=================================================
+ynh_script_progression "Adding system configurations related to $app..."
+
+ynh_config_add_systemd
+
+yunohost service add "$app" --description="Digiquiz" --log="/var/log/$app/$app.log"
+
+ynh_config_add_logrotate
+
+#=================================================
+# START SYSTEMD SERVICE
+#=================================================
+ynh_script_progression "Starting app's systemd service..."
+
+ynh_systemctl --service=$app --action="start" --log_path="/var/log/$app/$app.log"
+
+#=================================================
 # END OF SCRIPT
 #=================================================
 
