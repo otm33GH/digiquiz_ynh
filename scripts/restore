@@ -32,6 +32,22 @@ ynh_systemctl --service="php$php_version-fpm" --action=reload
 ynh_systemctl --service=nginx --action=reload
 
 #=================================================
+# RESTORE SYSTEM CONFIGURATIONS
+#=================================================
+ynh_script_progression "Restoring system configurations related to $app..."
+
+ynh_restore "/etc/nginx/conf.d/$domain.d/$app.conf"
+
+ynh_restore "/etc/systemd/system/$app.service"
+systemctl enable $app.service --quiet
+
+yunohost service add "$app" --description="Digiquiz" --log="/var/log/$app/$app.log"
+
+ynh_restore "/etc/logrotate.d/$app"
+
+ynh_restore "/var/log/$app/$app.log"
+
+#=================================================
 # END OF SCRIPT
 #=================================================
 
