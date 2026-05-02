@@ -49,9 +49,10 @@ ram.runtime = "50M"
       ask.en = "Size limit file upload (Mb)"
       type = "number"
       min = 0
-      max = 1000
-      help.fr = "Valeur maximale de 1Go"
-      help.en = "Max size 1Gb"
+      max = 5000
+      help.fr = "Valeur maximale de 5Go"
+      help.en = "Max size 5Gb"
+      default = 200
 
 [resources]
     [resources.sources.main]
