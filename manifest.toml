@@ -44,6 +44,15 @@ ram.runtime = "50M"
     type = "group"
     default = "visitors"
 
+    [install.max_upload_size]
+      ask.fr = "Taille limite pour le téléchargement des fichiers en Mo"
+      ask.en = "Size limit file upload (Mb)"
+      type = "number"
+      min = 0
+      max = 1000
+      help.fr = "Valeur maximale de 1Go"
+      help.en = "Max size 1Gb"
+
 [resources]
     [resources.sources.main]
     url = "https://codeberg.org/ladigitale/digiquiz/archive/1.4.10.tar.gz"
