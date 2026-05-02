@@ -24,6 +24,12 @@ ynh_backup "/etc/php/$php_version/fpm/pool.d/$app.conf"
 # Backup the NGINX configuration
 ynh_backup "/etc/nginx/conf.d/$domain.d/$app.conf"
 
+ynh_backup "/var/log/$app/$app.log"
+
+ynh_backup "/etc/logrotate.d/$app"
+
+ynh_backup "/etc/systemd/system/$app.service"
+
 #=================================================
 # END OF SCRIPT
 #=================================================
