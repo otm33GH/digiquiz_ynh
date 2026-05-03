@@ -47,13 +47,6 @@ popd
 chown -R $app:www-data "$install_dir"
 
 #=================================================
-# SYSTEM CONFIGURATION
-#=================================================
-ynh_script_progression "Adding system configurations related to $app..."
-
-ynh_config_add_logrotate
-
-#=================================================
 # END OF SCRIPT
 #=================================================
 
