@@ -6,6 +6,14 @@
 
 source /usr/share/yunohost/helpers
 
+
+#=================================================
+# INITIALIZE AND STORE SETTINGS
+#=================================================
+
+ynh_app_setting_set_default --key=php_upload_max_filesize --value=10G
+ynh_app_setting_set_default --key=php_post_max_size --value=10G
+
 #=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
 #=================================================
