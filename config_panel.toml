@@ -17,4 +17,4 @@ name.fr = "Téléchargement de fichiers"
       max = 5000
       help.fr = "Valeur maximale de 5Go"
       help.en = "Max size 5Gb"
-      bind = "VITE_UPLOAD_LIMIT:__INSTALL_DIR__/.env"
+      bind = "VITE_UPLOAD_LIMIT:__INSTALL_DIR__/.env.production"
