@@ -12,12 +12,13 @@ source /usr/share/yunohost/helpers
 ynh_script_progression "Upgrading source files..."
 
 # Download, check integrity, uncompress and patch the source from manifest.toml
-ynh_setup_source --dest_dir="$install_dir" --full_replace --keep="dist/inc/digiquiz.db .env.production"
+ynh_setup_source --dest_dir="$install_dir" --full_replace --keep="dist/inc/digiquiz.db"
 
 #=================================================
 # UPDATE A CONFIG FILE
 #=================================================
 ynh_script_progression "Updating $app's configuration files..."
+ynh_config_add --template=".env.production" --destination="$install_dir/.env.production"
 # patch old vite config with latest version
 ynh_config_add --template="vite.config.mjs" --destination="$install_dir/vite.config.mjs"
 
