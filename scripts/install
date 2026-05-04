@@ -6,6 +6,14 @@
 
 source /usr/share/yunohost/helpers
 
+
+#=================================================
+# INITIALIZE AND STORE SETTINGS
+#=================================================
+
+ynh_app_setting_set_default --key=php_upload_max_filesize --value=5G
+ynh_app_setting_set_default --key=php_post_max_size --value=5G
+
 #=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
 #=================================================
@@ -41,27 +49,10 @@ ynh_script_progression "Building $app..."
 
 pushd "$install_dir"
 	ynh_hide_warnings ynh_exec_as_app npm install
+	ynh_hide_warnings ynh_exec_as_app npm run build
 popd
 
 chown -R $app:www-data "$install_dir"
-
-#=================================================
-# SYSTEM CONFIGURATION
-#=================================================
-ynh_script_progression "Adding system configurations related to $app..."
-
-ynh_config_add_systemd
-
-#yunohost service add "$app" --description="Digiquiz" --log="/var/log/$app/$app.log"
-
-ynh_config_add_logrotate
-
-#=================================================
-# START SYSTEMD SERVICE
-#=================================================
-ynh_script_progression "Starting app's systemd service..."
-
-ynh_systemctl --service=$app --action="start" --log_path="/var/log/$app/$app.log"
 
 #=================================================
 # END OF SCRIPT
