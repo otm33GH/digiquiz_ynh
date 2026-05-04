@@ -54,6 +54,8 @@ popd
 
 chown -R $app:www-data "$install_dir"
 
+ln -s "$data_dir/fichiers" "$install_dir/dist/fichiers"
+
 #=================================================
 # END OF SCRIPT
 #=================================================
